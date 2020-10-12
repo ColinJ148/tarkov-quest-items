@@ -1,24 +1,49 @@
 import React from 'react'
 import { Checkbox, Button, List, ListItem, ListItemIcon, Grid, Paper, ListItemText } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
+import itemList from '../QuestItemsList'
+import background from '../assests/background.png'
 import '../App.css'
 
 
-const items = ['Armor 1', 'Armor 2', 'Armor 3', 'Armor 4', 'Armor 5', 'Armor 6',]
+const items = itemList.items;
+
 const useStyles = makeStyles((theme) => ({
     root: {
-        margin: 'auto',
+        backgroundImage: `url(${background})`,
+        marginBottom: theme.spacing(5),
     },
     paper: {
-        width: 200,
-        height: 400,
+        width: 400,
+        height: 800,
         overflow: 'auto',
+        background: 'rgb(0,0,0,.7)',
+        marginTop: theme.spacing(4),
+        marginBottom: theme.spacing(4)
+
     },
     button: {
-        margin: theme.spacing(0.5, 0),
-        background: 'white'
+        margin: theme.spacing(0.5, 5,0,5),
+        background: '#7b6d52'
     },
+
+    itemText: {
+        color: '#7b6d52',
+        fontSize: 'large',
+    },
+
 }));
+
+const CustomCheckbox = withStyles({
+    root: {
+        color: '#7b6d52',
+        '&$checked': {
+            color: '#7b6d52',
+        },
+    },
+    checked: {},
+})((props) => <Checkbox color="default" {...props} />);
+
 
 const not = (a, b) => {
     return a.filter((value) => b.indexOf(value) === -1);
@@ -53,11 +78,6 @@ const Questitems = () => {
     };
 
 
-    const handleAllRight = () => {
-        setRight(right.concat(left));
-        setLeft([]);
-    };
-
     const handleCheckedRight = () => {
         setRight(right.concat(leftChecked));
         setLeft(not(left, leftChecked));
@@ -70,10 +90,6 @@ const Questitems = () => {
         setChecked(not(checked, rightChecked));
     };
 
-    const handleAllLeft = () => {
-        setLeft(left.concat(right));
-        setRight([]);
-    };
     const customList = (items) => (
         <Paper className={classes.paper}>
             <List dense component="div" role="list">
@@ -81,9 +97,9 @@ const Questitems = () => {
                     const labelId = `transfer-list-item-${value}-label`;
 
                     return (
-                        <ListItem key={value} role="listitem" button onClick={handleToggle(value)}>
+                        <ListItem key={value} className={classes.itemText} role="listitem" button onClick={handleToggle(value)}>
                             <ListItemIcon>
-                                <Checkbox
+                                <CustomCheckbox
                                     checked={checked.indexOf(value) !== -1}
                                     tabIndex={-1}
                                     disableRipple
@@ -100,14 +116,14 @@ const Questitems = () => {
     );
 
     return (
-        <Grid container spacing={2} justify="center" alignItems="center" className={classes.root}>
+        <Grid container justify="center" alignItems="center" className={classes.root}>
             <Grid item>{customList(left)}</Grid>
             <Grid item>
                 <Grid container direction="column" alignItems="center">
 
                     <Button
                         variant="outlined"
-                        size="small"
+                        size="large"
                         className={classes.button}
                         onClick={handleCheckedRight}
                         disabled={leftChecked.length === 0}
@@ -117,7 +133,7 @@ const Questitems = () => {
               </Button>
                     <Button
                         variant="outlined"
-                        size="small"
+                        size="large"
                         className={classes.button}
                         onClick={handleCheckedLeft}
                         disabled={rightChecked.length === 0}
