@@ -47,7 +47,7 @@ const Footer = () => {
                     in-game. All data was acquired purely by observing and no third-party software was
                     used to mine data in any way.
                 </div>
-                <IconButton color='primary' onClick={() => window.open('https://github.com/ColinJ148', '_blank')}>
+                <IconButton color='primary' onClick={() => window.open('https://github.com/ColinJ148/tarkov-quest-items', '_blank')}>
                     <GitHubIcon />
                 </IconButton>
             </div>
