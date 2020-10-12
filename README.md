@@ -5,7 +5,8 @@
 - [About](#about)
 - [Getting Started](#getting_started)
 - [Usage](#usage)
-- [Deployment](#Deployment)
+- [Deployment](#deployment)
+- [Future Plans](#future_plans)
 
 ## About <a name = "about"></a>
 
@@ -27,7 +28,6 @@ npm install @material-ui/icons
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running.
 
 Clone repository
 
@@ -35,16 +35,20 @@ Clone repository
 git clone https://github.com/ColinJ148/tarkov-quest-items
 ```
 
-Use npm start to run on localhost:3000
+Use npm start to run on localhost:3000.
 
 ```
 npm start
 ```
 
-### Deployment
+## Deployment <a name = "deployment"></a>
 
-Application is currently being hosted on firebase
+Application is currently being hosted on firebase.
 
-```
+
 https://tarkov-quest-tracker.web.app/
-```
+
+## Future Plans <a name = "future_plans"></a>
+- Add images to Items
+- Saving quest item progress
+- Other tools for game (Map, Loot, Ammo)
